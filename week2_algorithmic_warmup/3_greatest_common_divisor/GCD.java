@@ -2,16 +2,12 @@ import java.util.*;
 
 public class GCD {
   private static int gcd_naive(int a, int b) {
-    int current_gcd = 1;
-    for(int d = 2; d <= a && d <= b; ++d) {
-      if (a % d == 0 && b % d == 0) {
-        if (d > current_gcd) {
-          current_gcd = d;
-        }
-      }
+    while (b != 0) {
+      int temp = a % b;
+      a = b;
+      b = temp;
     }
-
-    return current_gcd;
+    return a;
   }
 
   public static void main(String args[]) {

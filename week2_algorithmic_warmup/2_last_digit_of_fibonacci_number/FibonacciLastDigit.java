@@ -5,16 +5,17 @@ public class FibonacciLastDigit {
         if (n <= 1)
             return n;
 
-        int previous = 0;
-        int current  = 1;
+        int num1 = 0;
+        int num2  = 1;
+        int tempNthTerm = 0;
 
         for (int i = 0; i < n - 1; ++i) {
-            int tmp_previous = previous;
-            previous = current;
-            current = tmp_previous + current;
+            tempNthTerm = num1 % 10 + num2 % 10;
+            num1 = num2 % 10;
+            num2 = tempNthTerm % 10;
         }
 
-        return current % 10;
+        return tempNthTerm % 10;
     }
     
     public static void main(String[] args) {

@@ -2,11 +2,16 @@ import java.util.*;
 
 public class LCM {
   private static long lcm_naive(int a, int b) {
-    for (long l = 1; l <= (long) a * b; ++l)
-      if (l % a == 0 && l % b == 0)
-        return l;
+    return (long) a * b / gcd(a, b);
+  }
 
-    return (long) a * b;
+  private static int gcd(int a, int b) {
+    while (b != 0) {
+      int temp = a % b;
+      a = b;
+      b = temp;
+    }
+    return a;
   }
 
   public static void main(String args[]) {
