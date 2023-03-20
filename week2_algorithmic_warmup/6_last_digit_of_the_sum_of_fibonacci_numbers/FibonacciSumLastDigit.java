@@ -10,10 +10,10 @@ public class FibonacciSumLastDigit {
         long sum      = 1;
 
         for (long i = 0; i < n - 1; ++i) {
-            long tmp_previous = previous;
-            previous = current;
-            current = tmp_previous + current;
-            sum += current;
+            long tmp_previous = previous % 10;
+            previous = current % 10;
+            current = tmp_previous + current % 10;
+            sum += current % 10;
         }
 
         return sum % 10;
