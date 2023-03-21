@@ -1,9 +1,16 @@
 import java.util.*;
-import java.io.*;
-
 public class CarFueling {
     static int computeMinRefills(int dist, int tank, int[] stops) {
-        return -1;
+        int curDist = tank; // car starts with a full tank.
+        int count = 0;
+        for (int i = 0; i < stops.length && curDist < dist; i++) {
+            if (stops[i] <= curDist && (i + 1 == stops.length || stops[i + 1] > curDist)) {
+                count++;
+                curDist = stops[i] + tank;
+            }
+        }
+        return curDist >= dist ? count : -1;
+
     }
 
     public static void main(String[] args) {

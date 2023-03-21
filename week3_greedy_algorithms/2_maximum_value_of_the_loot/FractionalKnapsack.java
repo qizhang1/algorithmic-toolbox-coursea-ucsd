@@ -1,7 +1,4 @@
-import java.util.Collections;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.TreeMap;
 
 public class FractionalKnapsack {
     private static double getOptimalValue(int capacity, int[] values, int[] weights) {
