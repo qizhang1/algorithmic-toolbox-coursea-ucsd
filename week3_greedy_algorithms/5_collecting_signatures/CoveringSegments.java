@@ -3,13 +3,19 @@ import java.util.*;
 public class CoveringSegments {
 
     private static int[] optimalPoints(Segment[] segments) {
-        //write your code here
-        int[] points = new int[2 * segments.length];
-        for (int i = 0; i < segments.length; i++) {
-            points[2 * i] = segments[i].start;
-            points[2 * i + 1] = segments[i].end;
+        Arrays.sort(segments, Comparator.comparingInt(segment -> segment.start)); // sort by start point of segment
+        List<Integer> points =  new ArrayList<>();
+        int point =  segments[0].end;
+        for (int i = 1; i < segments.length; i++) {
+            if (segments[i].start <= point) { // overlap
+                point = Math.min(point, segments[i].end);
+            } else {
+                points.add(point);
+                point = segments[i].end;
+            }
         }
-        return points;
+        points.add(point);
+        return points.stream().mapToInt(i -> i).toArray();
     }
 
     private static class Segment {
